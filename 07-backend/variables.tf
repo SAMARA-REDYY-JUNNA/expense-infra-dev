@@ -13,7 +13,7 @@ variable "common_tags" {
         environment = "dev"
         terraform = "true"
         Component = "backend"
-        appVersion = 
+        appVersion = "v1.0.0"
     }
 }
 
