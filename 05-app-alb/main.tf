@@ -2,6 +2,7 @@ resource "aws_alb" "app_alb" {
     name               = "${var.project_name}-${var.environment}-app-alb"
     internal           = true
     load_balancer_type = "application"
+    # vpc_id = data.aws_ssm_parameter.vpc_id.value
     security_groups    = [data.aws_ssm_parameter.app_alb_sg_id.value]
     subnets            = split(",", data.aws_ssm_parameter.private_subnet_ids.value)
     enable_deletion_protection = false
@@ -33,19 +34,18 @@ module "records" {
   version = "~> 3.0"
 
   zone_name = var.zone_name
-
+  
   records = [
     {
       name    = "*.app-${var.environment}"
       type    = "A"
       allow_overwrite = true
-      alias = {
-        
-          name                   = aws_alb.app_alb.dns_name
-          zone_id                = aws_alb.app_alb.zone_id
-        }
+      alias   = {
+        name    = aws_alb.app_alb.dns_name
+        zone_id = aws_alb.app_alb.zone_id
+      }
     }
-  ] 
-} 
+  ]
+}
     
     

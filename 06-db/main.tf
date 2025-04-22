@@ -4,13 +4,15 @@ module "db" {
   identifier = "${var.project_name}-${var.environment}" #expense-dev
 
   engine            = "mysql"
-  engine_version    = "8.0"
-  instance_class    = "db.t3.micro"
-  allocated_storage = 5
+  engine_version    = "8.0.40"
+  instance_class    = "db.t4g.micro"
+  allocated_storage = 20
 
   db_name  = "transactions" # default schema for expense project
   username = "root"
   port     = "3306"
+  manage_master_user_password = false
+  password = "ExpenseApp1"
 
   vpc_security_group_ids = [data.aws_ssm_parameter.db_sg_id.value]
 
@@ -32,8 +34,8 @@ module "db" {
     }
   )
 
-  manage_master_user_password = false
-  password = "ExpenseApp1"
+  # manage_master_user_password = false
+  # password = "ExpenseApp1"
 
   skip_final_snapshot = true
   
@@ -68,22 +70,30 @@ module "db" {
   ]
 }
 
-# create R53 record for RDS instance
+#create R53 record for RDS instance
 
-module "records" {
-  source  = "terraform-aws-modules/route53/aws//modules/records"
-  version = "~> 3.0"
+# module "records" {
+#   source  = "terraform-aws-modules/route53/aws//modules/records"
+#   version = "~> 3.0"
 
-  zone_name = var.zone_name
+#   zone_name = var.zone_name
 
-  records = [
-    {
-      name    = "db-${var.environment}"
-      type    = "CNAME"
-      ttl     = 1
-      records = [
-        module.db.db_instance_address
-      ]
-    }
-  ]
+#   records = [
+#     {
+#       name    = "db-${var.environment}"
+#       type    = "CNAME"
+#       ttl     = 1
+#       records = [
+#         module.db.db_instance_address
+#       ]
+#     }
+#   ]
+# }
+
+resource "aws_route53_record" "www-dev" {
+  zone_id = var.zone_id
+  name    = "mysql-${var.environment}.${var.domain_name}"
+  type    = "CNAME"
+  ttl     = 1
+  records = [module.db.db_instance_address]
 }

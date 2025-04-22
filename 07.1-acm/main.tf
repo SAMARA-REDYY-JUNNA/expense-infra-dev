@@ -1,5 +1,6 @@
+
 resource "aws_acm_certificate" "expense" {
-  domain_name       = "*.mydaws.online"
+  domain_name       = "*.mydaws.fun"
   validation_method = "DNS"
 
   tags = merge(
@@ -22,7 +23,7 @@ resource "aws_route53_record" "expense" {
   allow_overwrite = true
   name            = each.value.name
   records         = [each.value.record]
-  ttl             = 1
+  ttl             = 60
   type            = each.value.type
   zone_id         = var.zone_id
 }

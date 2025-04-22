@@ -7,7 +7,7 @@ terraform {
     }
     backend "s3" {
       bucket = "mydaws-remote-state1"
-      key  = "expense-dev-backend"
+      key  = "expense-dev-cdn"
       region = "us-east-1"
       dynamodb_table = "mydaws-locking"
     }

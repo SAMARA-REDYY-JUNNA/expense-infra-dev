@@ -1,6 +1,6 @@
 resource "aws_cloudfront_distribution" "web_cdn" {
   origin {
-    domain_name              =  "web-${var.environment}.${var.zone_name}"#web-dev.daws78s.online
+    domain_name              =  "web-${var.environment}.${var.zone_name}"#web-dev.mydaws.fun
     origin_id                = "web-${var.environment}.${var.zone_name}"
     custom_origin_config  {
         http_port              = 80 // Required to be set but not used
@@ -12,7 +12,7 @@ resource "aws_cloudfront_distribution" "web_cdn" {
 
   enabled             = true
 
-  aliases = ["web-${var.common_tags.Component}.${var.zone_name}"]#web-cdn.daws78s.online
+  aliases = ["web-${var.common_tags.Component}.${var.zone_name}"]#web-cdn.mydaws.fun
 
   default_cache_behavior {
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
@@ -88,7 +88,7 @@ module "records" {
   
   records = [
     {
-      name    = "web-cdn" #web-cdn.daws78s.online
+      name    = "web-cdn" #web-cdn.mydaws.online
       type    = "A"
       allow_overwrite = true
       alias   = {

@@ -15,6 +15,14 @@ variable "common_tags" {
     }
 }
 
-variable "zone_name" {
-    default = "mydaws.online"
+variable "domain_name" {
+    default = "mydaws.fun"
 }
+variable "zone_id" {
+    default = "Z09915653K8Z3UCNOLRZ5"
+}
+
+
+# variable "zone_name" {
+#     default = "mydaws.online" 
+# }
