@@ -15,6 +15,6 @@ variable "common_tags" {
   }
 }
 
-variable "zone_name" {
+variable "domain_name" {
   default = "mydaws.fun"
 }

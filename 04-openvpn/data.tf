@@ -13,7 +13,7 @@ data "aws_key_pair" "vpn" {
 data "aws_ami" "ami_info" {
   
     most_recent = true
-    owners = ["679593333241"]
+    owners = ["973714476881"]
 
     filter {
         name = "name"
