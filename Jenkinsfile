@@ -15,17 +15,17 @@ pipeline {
                 """
             }
         }
-        stage('plan') {
-            steps {
-                sh 'echo this is a plan step'
-                sh 'sleep 10'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                sh 'echo this is a deploy step'
-            }
-        }
+        // stage('plan') {
+        //     steps {
+        //         sh 'echo this is a plan step'
+        //         sh 'sleep 10'
+        //     }
+        // }
+        // stage('Deploy') {
+        //     steps {
+        //         sh 'echo this is a deploy step'
+        //     }
+        // }
     }
         post { 
             always { 
