@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('init') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'aws-credentials', usernameVariable: 'AKIAXXK43XBPQN2SHOXW', passwordVariable: 'ASHX9wTf8SIMQkCFj5jbJHdbvNnN2uAflOLdzFbo')])
+                withCredentials([usernamePassword(credentialsId: 'aws-credentials', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')])
                 {
                 sh """
                  cd 01-vpc
