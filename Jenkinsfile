@@ -9,10 +9,13 @@ pipeline {
     stages {
         stage('init') {
             steps {
+                withCredentials([usernamePassword(credentialsId: 'aws-credentials', usernameVariable: 'AKIAXXK43XBPQN2SHOXW', passwordVariable: 'ASHX9wTf8SIMQkCFj5jbJHdbvNnN2uAflOLdzFbo')])
+                {
                 sh """
                  cd 01-vpc
                  terraform init -reconfigure
                 """
+                }
             }
         }
         // stage('plan') {
