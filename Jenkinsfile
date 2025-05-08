@@ -15,7 +15,6 @@ pipeline {
                 """
                 }
             }
-        }
         stage('plan') {
             steps {
                 sh 'echo this is a plan step'
@@ -39,4 +38,5 @@ pipeline {
                 echo 'I will run when pipeline is failed!'
             }
         }
+    }
     
