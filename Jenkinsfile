@@ -5,7 +5,7 @@ pipeline {
     options {
         timeout(time: 30, unit: 'MINUTES')
         disableConcurrentBuilds()
-        ansiColor('xterm')
+        // ansiColor('xterm')
     }
     stages {
         stage('init') {
@@ -31,6 +31,7 @@ pipeline {
         post { 
             always { 
                 echo 'I will always say Hello again!'
+                deleteDir()
             }
             success { 
                 echo 'I will run when pipeline is successful!'
