@@ -50,7 +50,7 @@ pipeline {
                 """
             }
         }
-    }
+    
     stage('Destroy') {
              when {
                 expression{
@@ -62,6 +62,7 @@ pipeline {
                  cd 01-vpc
                  terraform destroy -auto-approve
                 """
+                }
             }
         }
     
