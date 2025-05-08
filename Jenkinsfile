@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('init') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'aws-credentials', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')])
+                // withCredentials([usernamePassword(credentialsId: 'aws-credentials', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY')])
                 {
                 sh """
                  cd 01-vpc
@@ -18,17 +18,17 @@ pipeline {
                 }
             }
         }
-        // stage('plan') {
-        //     steps {
-        //         sh 'echo this is a plan step'
-        //         sh 'sleep 10'
-        //     }
-        // }
-        // stage('Deploy') {
-        //     steps {
-        //         sh 'echo this is a deploy step'
-        //     }
-        // }
+        stage('plan') {
+            steps {
+                sh 'echo this is a plan step'
+                sh 'sleep 10'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'echo this is a deploy step'
+            }
+        }
     }
         post { 
             always { 
