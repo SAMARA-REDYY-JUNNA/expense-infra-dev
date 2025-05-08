@@ -22,7 +22,7 @@ pipeline {
         stage('plan') {
             when {
                 expression{
-                    parms.action == 'Apply'
+                    params.action == 'Apply'
                 }
             }
             steps {
