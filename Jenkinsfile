@@ -9,7 +9,6 @@ pipeline {
     stages {
         stage('init') {
             steps {
-                {
                 sh """
                  cd 01-vpc
                  terraform init -reconfigure
@@ -40,4 +39,4 @@ pipeline {
                 echo 'I will run when pipeline is failed!'
             }
         }
-    }
+    
