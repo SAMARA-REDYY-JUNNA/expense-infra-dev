@@ -20,6 +20,11 @@ pipeline {
                 }
             }
         stage('plan') {
+            when {
+                expression{
+                    parms.action == 'Apply'
+                }
+            }
             steps {
                 sh """
                  cd 01-vpc
@@ -28,6 +33,11 @@ pipeline {
             }
         }
         stage('Deploy') {
+             when {
+                expression{
+                    parms.action == 'Apply'
+                }
+            }
             input {
                 message "should we continue?"
                 ok "yes, we should!"
@@ -41,6 +51,20 @@ pipeline {
             }
         }
     }
+    stage('Destroy') {
+             when {
+                expression{
+                    parms.action == 'Destroy'
+                }
+            }
+            steps {
+                sh """
+                 cd 01-vpc
+                 terraform destroy -auto-approve
+                """
+            }
+        }
+    
         post { 
             always { 
                 echo 'I will always say Hello again!'
