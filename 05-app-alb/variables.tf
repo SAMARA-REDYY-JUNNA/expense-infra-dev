@@ -20,7 +20,7 @@ variable "zone_name" {
     default = "mydaws.fun"
 }
 variable "zone_id" {
-    default = "Z09915653K8Z3UCNOLRZ5"
+    default = "Z00104193BYNRVYUZ1PV1"
   
 }
 
