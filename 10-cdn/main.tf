@@ -73,7 +73,8 @@ resource "aws_cloudfront_distribution" "web_cdn" {
   )
 
   viewer_certificate {
-    acm_certificate_arn = data.aws_ssm_parameter.acm_certificate_arn.value
+    acm_certificate_arn = "arn:aws:acm:us-east-1:193311516103:certificate/dd7c4ea3-0ad8-47af-8401-26ab74a44624"
+    # data.aws_ssm_parameter.acm_certificate_arn.value
     minimum_protocol_version = "TLSv1.2_2021"
     ssl_support_method = "sni-only"
   }
